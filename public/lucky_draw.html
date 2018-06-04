@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Google I/O Extended Miền Trung 2016</title>
+        <meta name="description" content="Google I/O Extended Vietnam 2016. Hosted by GDG Vietnam Miền Trung">
+        <link rel="icon" sizes="32x32" href="static/images/favicon-32.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Google I/O 2016">
+        <link rel="shortcut icon" href="static/images/favicon-72.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="static/css/semantic.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/main.css">
+	    <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="static/css/animate.css">
+	    <link rel="stylesheet" href="static/css/materialize.css">
+	    <link rel="stylesheet" href="static/css/responsive.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="static/js/semantic.min.js"></script>
+        <script src="static/js/countdown.js"></script>
+        <script src="static/js/tweenmax.js"></script>
+        <script src="static/js/jquery.particleground.js"></script>
+        <!-- Open Graph data -->
+        <meta property="og:title" content="Google I/O Extended Miền Trung 2016" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="Google I/O Extended là một sự kiện bên lề của Google I/O được diễn ra hàng năm tại Mỹ, với mong muốn mang những kiến thức cũng như nhiều sản phẩm đột phá vốn được Google giới thiệu tại Google I/O năm nay đến gần hơn với cộng đồng thành viên GDG nói chung và GDG Vietnam nói riêng." />
+
+        <style type="text/css">
+            html {
+               height: 100%;
+            }
+
+            body {
+               min-height: 100%;
+            }
+
+            #number{
+                font-size: 400px;
+                text-align: center;
+                height: 600px;
+                line-height: 700px;
+                font-weight: bold;
+                color:#7986cb;
+            }
+
+            .flex-center-vertically {
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              height: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="flex-center-vertically">
+                    <span id="number">???</span>
+                </div>
+
+                <div class="row">
+                    <div class="col offset-s3 s6 center-align">
+                        <a id="btb-draw" href="" class="waves-effect waves-light btn-large center-align"><i class="material-icons right large">play_circle_outline</i>Random Lucky Number</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="static/js/materialize.js"></script>
+	<script src="static/js/init.js"></script>
+	    <script type="text/javascript">
+        (function($){
+            $.fn.extend({
+                numAnim: function(options) {
+                    if ( ! this.length)
+                        return false;
+
+                    this.defaults = {
+                        endAt: 2560,
+                        numClass: 'autogen-num',
+                        duration: 5,   // seconds
+                        interval: 90  // ms
+                    };
+                    var settings = $.extend({}, this.defaults, options);
+
+                    var $num = $('<span/>', {
+                        'class': settings.numClass
+                    });
+
+                    return this.each(function() {
+                        var $this = $(this);
+
+                        // Wrap each number in a tag.
+                        var frag = document.createDocumentFragment(),
+                            numLen = settings.endAt.toString().length;
+                        for (x = 0; x < numLen; x++) {
+                            var rand_num = Math.floor( Math.random() * 10 );
+                            frag.appendChild( $num.clone().text(rand_num)[0] )
+                        }
+                        $this.empty().append(frag);
+
+                        var get_next_num = function(num) {
+                            ++num;
+                            if (num > 9) return 0;
+                            return num;
+                        };
+
+                        // Iterate each number.
+                        $this.find('.' + settings.numClass).each(function() {
+                            var $num = $(this),
+                                num = parseInt( $num.text() );
+
+                            var interval = setInterval( function() {
+                                num = get_next_num(num);
+                                $num.text(num);
+                            }, settings.interval);
+
+                            setTimeout( function() {
+                                clearInterval(interval);
+                            }, settings.duration * 1000 - settings.interval);
+                        });
+
+                        setTimeout( function() {
+                            $this.text( settings.endAt.toString() );
+                        }, settings.duration * 1000);
+                    });
+                }
+            });
+        })(jQuery);
+
+        function draw_number(){
+            var random = Math.floor((Math.random() * 500) + 1);
+
+            $("#number").numAnim({
+                endAt: random,
+                duration: 3
+            });
+        }
+
+        $("#btb-draw").click(function(){
+            event.preventDefault();
+            draw_number();
+        });
+
+    </script>
+    </body>
+</html>
