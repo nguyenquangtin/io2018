@@ -1,49 +1,36 @@
 <?php
-    /**
-     * GIT DEPLOYMENT SCRIPT
-     *
-     * Used for automatically deploying websites via github or bitbucket, more deets here:
-     * https://gist.github.com/riodw/71f6e2244534deae652962b32b7454e2
-     * How To Use:
-     * https://medium.com/riow/deploy-to-production-server-with-git-using-php-ab69b13f78ad
-     */
-    // The commands
-    $commands = array(
-        'echo $PWD',
-        'whoami',
-        'git reset --hard HEAD',
-        'git pull',
-        'git status',
-        'git submodule sync',
-        'git submodule update',
-        'git submodule status',
-    );
-    // Run the commands for output
-    $output = '';
-    foreach($commands AS $command){
-        // Run it
-        $tmp = shell_exec($command);
-        // Output
-        $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
-        $output .= htmlentities(trim($tmp)) . "\n";
-    }
-    // Make it pretty for manual user access (and why not?)
-?>
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <title>GIT DEPLOYMENT SCRIPT</title>
-</head>
-<body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
-<pre>
- ____________________________
-|                            |
-| Git Deployment Script v0.1 |
-|      github.com/riodw 2017 |
-|____________________________|
+$repo_dir = '/srv/users/serverpilot/apps/io2016/repo';
+$web_root_dir = '/srv/users/serverpilot/apps/io2016/public';
 
-<?php echo $output; ?>
-</pre>
-</body>
-</html>
+// Full path to git binary is required if git is not in your PHP user's path. Otherwise just use 'git'.
+$git_bin_path = 'git';
+
+$update = false;
+
+// Parse data from Bitbucket hook payload
+$payload = json_decode($_POST['payload']);
+
+if (empty($payload->commits)){
+  // When merging and pushing to bitbucket, the commits array will be empty.
+  // In this case there is no way to know what branch was pushed to, so we will do an update.
+  $update = true;
+} else {
+  foreach ($payload->commits as $commit) {
+    $branch = $commit->branch;
+    if ($branch === 'master' || isset($commit->branches) && in_array('master', $commit->branches)) {
+      $update = true;
+      break;
+    }
+  }
+}
+
+if ($update) {
+  // Do a git checkout to the web root
+  exec('cd ' . $repo_dir . ' && ' . $git_bin_path  . ' fetch');
+  exec('cd ' . $repo_dir . ' && GIT_WORK_TREE=' . $web_root_dir . ' ' . $git_bin_path  . ' checkout -f');
+
+  // Log the deployment
+  $commit_hash = shell_exec('cd ' . $repo_dir . ' && ' . $git_bin_path  . ' rev-parse --short HEAD');
+  file_put_contents('deploy.log', date('m/d/Y h:i:s a') . " Deployed branch: " .  $branch . " Commit: " . $commit_hash . "\n", FILE_APPEND);
+}
+?>
