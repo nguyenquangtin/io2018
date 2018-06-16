@@ -169,7 +169,30 @@ ul.list-item li{
  	color: #919191;
  }
 
-#about { background: url('static/images/banner1.jpg') center top no-repeat; background-attachment: fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+#about {
+	background: url('/static/images/banner.gif') no-repeat fixed center top;
+	-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+	background-size: cover;
+}
 #about .overlay { background: #0096D6; opacity: .6; }
 #about.section, #newsletter.section { padding-top: 60px; }
 .sub-title {font-size: 20px; color: #fff;}
+.box-image img{
+	text-align: center;
+	margin: 0 auto;
+	height: auto;
+}
+.title-sponsor{
+	font-size: 40px;
+}
+
+#sponsor{
+	margin-bottom: 30px;
+}
+
+.block-speaker{
+	height: 520px;
+}
+.speaker-image{
+	height: 200px;
+}

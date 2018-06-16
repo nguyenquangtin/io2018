@@ -6,7 +6,9 @@
     .col-md-15, col-sm-3{width: 20%;}
     #home .hero-big { font-size: 50px; line-height: 80px;}
     .year{font-size: 70pt;}
-    #home .hero-small{font-size: 15pt; margin: 0; margin-bottom: 10px;}
+    #home .hero-small{font-size: 15pt;
+      margin: 0 0 10px;
+    }
     .lilogo{width: 35px; overflow: hidden;}
     .slide-list{width: 93%;}
     
@@ -22,7 +24,9 @@
     .col-md-15, col-sm-3{width: 20%;}
     #home .hero-big{font-size: 58pt; line-height: 100px}
     .year { font-size: 82pt;}
-    #home .hero-small{font-size: 18pt; margin: 0; margin-bottom: 15px;}
+    #home .hero-small{font-size: 18pt;
+      margin: 0 0 15px;
+    }
     .hero-small-vn{font-size: 19.5pt !important;}
     .lilogo{width: auto; overflow: visible;}
     .slide-list{width: 90%;}
@@ -49,7 +53,7 @@
   .navigation-bar > li{padding: 5px 2px;}
   .video-container {width: 720px; height: 405px;}
   .home_btn{bottom: 30px}
-  #home .btn-3d { margin: 5px 0px;}
+  #home .btn-3d { margin: 5px 0;}
   .home_div_btn a + a{margin-left: 30px !important;}
   .countdown .stat, .countdown .stat_after{font-size: 16pt;}
   .countdown .stat-info{font-size: 11px;}
@@ -79,14 +83,14 @@
   padding: 10px 0;
   position: relative;
   top: 0px; }
-  #home .btn-3d { margin: 0px 0px 15px 0px;}
+  #home .btn-3d { margin: 0 0 15px 0;}
   #home .hero-big {  font-size: 60px;  text-transform: uppercase;  line-height: 80px;   margin-top: 10px;  }
   
   .nav-tabs-simple { margin-top:25px; }
   #subscribe .btn {margin-top:25px;}
   #elements .btn {margin-top:10px;}
   .navigation.open a {z-index:1000; position:relative; display:block;}
-  #home .hero-normal {font-size: 18pt; margin: 0px 0px 20px 0px;}
+  #home .hero-normal {font-size: 18pt; margin: 0 0 20px 0;}
   #home hr {margin-top: 5px; margin-bottom: 5px;}
   .navigation-social li {padding-top: 80px;}
   .nav-tabs-simple .nav-tabs .icon { display: none; }
@@ -171,7 +175,7 @@
   .container{padding-left: 15px !important; padding-right: 15px !important;}
   #home .hero-big { font-size: 37px; line-height: 57px; margin-top: 10px; }
   .year{font-size: 70px;}
-  #home .hero-normal {font-size: 18pt; margin: 0px 0px 20px 0px;}
+  #home .hero-normal {font-size: 18pt; margin: 0 0 20px 0;}
   .navigation-social li {padding-top: 80px;}
   .pricing-col { width: 100% !important; }
   .nav-tabs-simple .nav-tabs li a { font-size: 20px; padding: 0; }
