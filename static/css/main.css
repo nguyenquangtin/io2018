@@ -170,13 +170,14 @@ ul.list-item li{
  }
 
 #about {
-	background: url('/static/images/banner.gif') no-repeat fixed center top;
+	background: no-repeat fixed center top;
 	-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
 	background-size: cover;
 }
 #about .overlay { background: #0096D6; opacity: .6; }
 #about.section, #newsletter.section { padding-top: 60px; }
 .sub-title {font-size: 20px; color: #fff;}
+
 .box-image img{
 	text-align: center;
 	margin: 0 auto;
