@@ -201,7 +201,7 @@ ul.list-item li {
     color: #919191;
 }
 
-#about.section, .title-sponsor {
+#about.section {
     font-size: 40px;
 }
 
@@ -210,9 +210,13 @@ ul.list-item li {
 }
 
 .block-speaker {
-    height: 520px;
+    height: 550px;
 }
 
 .speaker-image {
-    height: 200px;
+    height: 250px;
+}
+
+.title-sponsor{
+    font-size: 30px;
 }
