@@ -1,6 +1,6 @@
 {
   "name": "Google I/O Extended MienTrung 2018",
-  "short_name": "GDGMT I/O 2018",
+  "short_name": "GDG I/O 2018",
   "start_url": "index.html?utm_source=web_app_manifest",
   "scope" : "./",
   "display": "standalone",
@@ -30,6 +30,5 @@
     "src": "static/images/homescreen/homescreen512.png",
     "sizes": "512x512",
     "type": "image/png"
-  }],
-  "prefer_related_applications": false,
+  }]
 }
