@@ -655,6 +655,9 @@
 <script src="https://io2018.gdgmientrung.com/static/js/min/tweenmax-min.js" defer></script>
 <script src="https://io2018.gdgmientrung.com/static/js/jquery.particleground.js" defer></script>
 <script>
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    console.log( "ready!" );
     var countDown = new IOWA.CountdownTimer.Core(
         new Date("2018-06-29T09:00:00.000Z"),
         document.querySelector('countdown-timer')
@@ -685,6 +688,7 @@
     window.setTimeout(function () {
         $('.footer').removeClass('hidden').addClass('animated slideInUp');
     }, 3800);
+});
 </script>
 
 <script src="https://io2018.gdgmientrung.com/static/js/bootstrap.min.js" defer></script>
